@@ -1,7 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import React from 'react';
+import { addCustomerAction, removeCustomerAction } from 'store/customerReducer';
 
 function App() {
   const dispatch = useDispatch();
@@ -22,13 +22,11 @@ function App() {
       id: Date.now()
 
     }
-    dispatch({type: "ADD_CUSTOMER", payload: customer});
+    dispatch(addCustomerAction(customer));
   }
 
   const removeCustomer = (customer) => {
-    console.log('remove');
-    console.log(customer.id);
-    dispatch({type: "REMOVE_CUSTOMER", payload: customer.id});
+    dispatch(removeCustomerAction(customer.id));
   }
 
   return (
